@@ -27,19 +27,35 @@ def register(request):
     username = request.POST['username']
     email = request.POST['email']
     password = request.POST['password']
-    firstName = request.POST['first_name']
-    lastName = request.POST['last_name']
+    if (hasattr(request.POST,'first_name')):
+        firstName = request.POST['first_name']
+    else:
+        firstName = 'No'
+    if (hasattr(request.POST,'last_name')):
+        lastName = request.POST['last_name']
+    else:
+        lastName = 'Name'
     dob = request.POST['dob']
-    weight = request.POST['weight']
-    height = request.POST['height']
-    gender = False
+    if (hasattr(request.POST,'weight')):
+        weight = request.POST['weight']
+    else:
+        weight = 0
+    if (hasattr(request.POST,'height')):
+        height = request.POST['height']
+    else:
+        height = 0
+    if (hasattr(request.POST,'male')):
+        gender = True
+    else:
+        gender = False
     newAccount = Account.objects.create_user(username=username, email=email, password=password,
-                                             firstName=firstName, lastName=lastName, dob=dob, gender=gender,
+                                             first_name=firstName, last_name=lastName, dob=dob, gender=gender,
                                              weight=weight, height=height)
     if (newAccount is not None):
+        data = {'success': True}
+    else:
         data = {'success': False}
-    return HttpResponse()
-
+    return HttpResponse(data)
 
 @csrf_exempt
 def auth(request):
