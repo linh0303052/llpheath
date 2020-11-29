@@ -26,13 +26,13 @@ def loginView(request):
 def register(request):
     username = request.POST['username']
     email = request.POST['email']
-    user = Account.objects.get(username=username)
+    user = Account.objects.filter(username=username)
     if (user is not None):
         data = {'success': False,
                 'message': 'Username existed!'}
         return HttpResponse(data)
 
-    user = Account.objects.get(email=email)
+    user = Account.objects.filter(email=email)
     if (user is not None):
         data = {'success': False,
                 'message': 'Username existed!'}
