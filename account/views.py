@@ -109,7 +109,7 @@ def forgot_password(request):
 def change_password(request):
     data = {'success': False}
     username = request.POST['username']
-    old_password = request.POST['old_pasword']
+    old_password = request.POST['old_password']
     new_password = request.POST['new_password']
     user = Account.objects.get(username=username)
     if (user.check_password(old_password)):
