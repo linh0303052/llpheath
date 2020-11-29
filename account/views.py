@@ -93,10 +93,10 @@ def forgot_password(request):
         return HttpResponse(json.dumps(data), content_type='application/json')
     
     user = Account.objects.get(username=username)
-    last_name = user[0].last_name
-    email = user[0].email
-    user[0].set_password(password)
-    user[0].save()
+    last_name = user.last_name
+    email = user.email
+    user.set_password(password)
+    user.save()
     send_mail(
         subject='[LLP Health] Reset password',
         message='Dear {},\n Your password has been changed to:{}. \n Log in with this new password and then change to another.\nBest regards'.format(last_name, password),
