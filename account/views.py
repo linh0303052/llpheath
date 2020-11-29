@@ -27,13 +27,13 @@ def register(request):
     username = request.POST['username']
     email = request.POST['email']
     user = Account.objects.filter(username=username)
-    if (user is not None):
+    if (len(user) > 0):
         data = {'success': False,
                 'message': 'Username existed!'}
         return HttpResponse(data)
 
     user = Account.objects.filter(email=email)
-    if (user is not None):
+    if (len(user) > 0):
         data = {'success': False,
                 'message': 'Username existed!'}
         return HttpResponse(data)
