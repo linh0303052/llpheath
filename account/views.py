@@ -115,6 +115,7 @@ def change_password(request):
     if (user.check_password(old_password)):
         user.set_password(new_password)
         data['success'] = True
+        user.save()
     else:
         data['message'] = 'wrong password'
     return HttpResponse(json.dumps(data), content_type='application/json')
