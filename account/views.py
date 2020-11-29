@@ -26,6 +26,18 @@ def loginView(request):
 def register(request):
     username = request.POST['username']
     email = request.POST['email']
+    user = Account.objects.get(username=username)
+    if (user is not None):
+        data = {'success': False,
+                'message': 'Username existed!'}
+        return HttpResponse(data)
+
+    user = Account.objects.get(email=email)
+    if (user is not None):
+        data = {'success': False,
+                'message': 'Username existed!'}
+        return HttpResponse(data)
+
     password = request.POST['password']
     if (hasattr(request.POST,'first_name')):
         firstName = request.POST['first_name']
