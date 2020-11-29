@@ -25,13 +25,13 @@ def register(request):
     user = Account.objects.filter(username=username)
     if (len(user) > 0):
         data = {'success': False,
-                'message': 'Username existed!'}
+                'message': 'Username already exists.'}
         return HttpResponse(json.dumps(data), content_type='application/json')
 
     user = Account.objects.filter(email=email)
     if (len(user) > 0):
         data = {'success': False,
-                'message': 'Email existed!'}
+                'message': 'Email already exists.'}
         return HttpResponse(json.dumps(data), content_type='application/json')
 
     password = request.POST['password']
