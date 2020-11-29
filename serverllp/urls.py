@@ -20,7 +20,6 @@ from account.views import loginView, register, auth, forgot_password
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', login),
     path('register/', register),
     path('auth/', auth),
     path('forgotpassword/', forgot_password)
