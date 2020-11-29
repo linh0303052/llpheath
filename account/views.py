@@ -115,7 +115,7 @@ def change_password(request):
         user.set_password(new_password)
         data.success = True
     else:
-        data.message = 'wrong password'
+        data.['message'] = 'wrong password'
     return HttpResponse(json.dumps(data), content_type='application/json')
 
 
@@ -124,9 +124,9 @@ def getUser(request):
     data = {'success': False}
     username = request.POST['username']
     user = Account.objects.get(username=username)
-    data.dob = user.dob
-    data.first_name = user.first_name
-    data.last_name = user.last_name
-    data.email = user.email
+    data['dob'] = user.dob
+    data.['first_name'] = user.first_name
+    data.['last_name'] = user.last_name
+    data.['email'] = user.email
     data.success = True
     return HttpResponse(json.dumps(data), content_type='application/json')
