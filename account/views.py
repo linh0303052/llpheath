@@ -88,7 +88,7 @@ def forgot_password(request):
 
     user = Account.objects.filter(username=username)
     if (len(user) == 0):
-        data.message = 'username does not exist'
+        data['message'] = 'username does not exist'
         return HttpResponse(json.dumps(data), content_type='application/json')
     
     last_name = user.last_name
@@ -100,7 +100,7 @@ def forgot_password(request):
         recipient_list=[email],
         from_email='ltt.lop9a1.lhlinh@gmail.com',
     )
-    data.success = True
+    data['success'] = True
     return HttpResponse(json.dumps(data), content_type='application/json')
 
 
@@ -113,7 +113,7 @@ def change_password(request):
     user = Account.objects.get(username=username)
     if (user.check_password(old_password)):
         user.set_password(new_password)
-        data.success = True
+        data['success'] = True
     else:
         data['message'] = 'wrong password'
     return HttpResponse(json.dumps(data), content_type='application/json')
@@ -128,5 +128,5 @@ def getUser(request):
     data['first_name'] = user.first_name
     data['last_name'] = user.last_name
     data['email'] = user.email
-    data.success = True
+    data['success'] = True
     return HttpResponse(json.dumps(data), content_type='application/json')
