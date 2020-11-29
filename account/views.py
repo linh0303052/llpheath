@@ -30,7 +30,7 @@ def register(request):
     user = Account.objects.filter(email=email)
     if (len(user) > 0):
         data = {'success': False,
-                'message': 'Username existed!'}
+                'message': 'Email existed!'}
         return HttpResponse(json.dumps(data), content_type='application/json')
 
     password = request.POST['password']
