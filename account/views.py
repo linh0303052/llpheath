@@ -92,6 +92,7 @@ def forgot_password(request):
         data['message'] = 'username does not exist'
         return HttpResponse(json.dumps(data), content_type='application/json')
     
+    user = Account.objects.get(username=username)
     last_name = user[0].last_name
     email = user[0].email
     user[0].set_password(password)
