@@ -99,7 +99,7 @@ def forgot_password(request):
         message='''Dear {},
                     Your password has been changed to:{}
                     Log in with this new password and then change to another.
-                    Best regards.'''.format(last_name, password)
+                    Best regards.'''.format(last_name, password),
         recipient_list=[email],
         from_email='ltt.lop9a1.lhlinh@gmail.com'
     )
