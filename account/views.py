@@ -7,7 +7,6 @@ from django.core.mail import send_mail
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import login as user_login
 from django.contrib.auth.forms import AuthenticationForm
-from django.utils.dateparse import parse_date
 
 import json
 
@@ -43,7 +42,7 @@ def register(request):
         lastName = request.POST['last_name']
     else:
         lastName = 'Name'
-    dob = parse_date(request.POST['dob'])
+    dob = request.POST['dob']
     print(dob.)
     if (hasattr(request.POST,'weight')):
         weight = request.POST['weight']
