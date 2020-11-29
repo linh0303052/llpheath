@@ -7,6 +7,7 @@ from django.core.mail import send_mail
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import login as user_login
 from django.contrib.auth.forms import AuthenticationForm
+from datetime import datetime
 
 import json
 
@@ -124,7 +125,7 @@ def getUser(request):
     data = {'success': False}
     username = request.POST['username']
     user = Account.objects.get(username=username)
-    data['dob'] = user.dob
+    data['dob'] = user.dob.strftime('%y-%m-%d')
     data['first_name'] = user.first_name
     data['last_name'] = user.last_name
     data['email'] = user.email
