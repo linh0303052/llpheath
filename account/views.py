@@ -99,7 +99,7 @@ def forgot_password(request):
     user.save()
     send_mail(
         subject='[LLP Health] Reset password',
-        message='DearLinh',
+        message='Dear {},\n Your password has been changed to:{}. \n Log in with this new password and then change to another.\nBest regards'.format(last_name, password),
         recipient_list=[email],
         from_email='ltt.lop9a1.lhlinh@gmail.com',
     )
