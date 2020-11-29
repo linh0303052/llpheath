@@ -25,13 +25,13 @@ def register(request):
     if (len(user) > 0):
         data = {'success': False,
                 'message': 'Username existed!'}
-        return HttpResponse(data)
+        return HttpResponse(json.dumps(data), content_type='application/json')
 
     user = Account.objects.filter(email=email)
     if (len(user) > 0):
         data = {'success': False,
                 'message': 'Username existed!'}
-        return HttpResponse(data)
+        return HttpResponse(json.dumps(data), content_type='application/json')
 
     password = request.POST['password']
     if (hasattr(request.POST,'first_name')):
@@ -63,7 +63,7 @@ def register(request):
         data = {'success': True}
     else:
         data = {'success': False}
-    return HttpResponse(data)
+    return HttpResponse(json.dumps(data), content_type='application/json')
 
 @csrf_exempt
 def auth(request):
