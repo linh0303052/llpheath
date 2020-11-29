@@ -125,7 +125,7 @@ def getUser(request):
     data = {'success': False}
     username = request.POST['username']
     user = Account.objects.get(username=username)
-    data['dob'] = user.dob.strftime('%yy-%m-%d')
+    data['dob'] = user.dob.strftime('%Y-%m-%d')
     data['first_name'] = user.first_name
     data['last_name'] = user.last_name
     data['email'] = user.email
