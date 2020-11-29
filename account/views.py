@@ -43,7 +43,6 @@ def register(request):
     else:
         lastName = 'Name'
     dob = request.POST['dob']
-    print(dob.)
     if (hasattr(request.POST,'weight')):
         weight = request.POST['weight']
     else:
