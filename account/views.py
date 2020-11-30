@@ -131,12 +131,12 @@ def getUser(request, username):
         data['message'] = 'This user does not exists.'
             return HttpResponse(json.dumps(data), content_type='application/json')
 
-    data['First name'] = user.first_name
-    data['Last name'] = user.last_name
-    data['Email'] = user.email
-    data['D.O.B'] = user.dob.strftime('%Y-%m-%d')
-    data['Height'] = user.height
-    data['Weight'] = user.weight
-    data['Gender'] = user.gender
+    data['First name'] = user[0].first_name
+    data['Last name'] = user[0].last_name
+    data['Email'] = user[0].email
+    data['D.O.B'] = user[0].dob.strftime('%Y-%m-%d')
+    data['Height'] = user[0].height
+    data['Weight'] = user[0].weight
+    data['Gender'] = user[0].gender
     data['success'] = True
     return HttpResponse(json.dumps(data), content_type='application/json')
