@@ -24,6 +24,6 @@ urlpatterns = [
     path('register/', register),
     path('auth/', auth),
     path('forgotpassword/', forgot_password),
-    path('getuser/', getUser),
+    path('getuser/<username>', getUser),
     path('changepassword/', change_password),
 ]
