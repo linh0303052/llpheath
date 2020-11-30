@@ -14,7 +14,7 @@ class Exercise(models.Model):
     description = models.CharField(max_length=1024)
 
     def toObject(self):
-        return {'title': self.title , 'kind': self.kind, 'description': self.description}
+        return {'title': self.title , 'kind': self.kind.get_kind_display(), 'description': self.description}
 
 
 class JoinExercise(models.Model):
