@@ -124,16 +124,15 @@ def change_password(request):
 
 
 @csrf_exempt
-def getUser(request):
+def getUser(request, username):
     data = {'success': False}
-    username = request.POST['username']
     user = Account.objects.get(username=username)
-    data['first_name'] = user.first_name
-    data['last_name'] = user.last_name
-    data['email'] = user.email
-    data['dob'] = user.dob.strftime('%Y-%m-%d')
-    data['height'] = user.height
-    data['weight'] = user.weight
-    data['gender'] = user.gender
-    data['success'] = True
+    data['First name'] = user.first_name
+    data['Last name'] = user.last_name
+    data['Email'] = user.email
+    data['D.O.B'] = user.dob.strftime('%Y-%m-%d')
+    data['Height'] = user.height
+    data['Weight'] = user.weight
+    data['Gender'] = user.gender
+    data['Success'] = True
     return HttpResponse(json.dumps(data), content_type='application/json')
