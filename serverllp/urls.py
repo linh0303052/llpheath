@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from account.views import loginView, register, auth, forgot_password, getUser, change_password
+from exercise.views import get_exercise
 # from login.views import loginView, register, auth
 
 urlpatterns = [
@@ -26,4 +27,5 @@ urlpatterns = [
     path('forgotpassword/', forgot_password),
     path('getuser/<username>/', getUser),
     path('changepassword/', change_password),
+    path('getexercise/<username>/', get_exercise),
 ]
