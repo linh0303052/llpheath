@@ -10,6 +10,6 @@ def get_exercise(request, username):
     data={'success':False}
     data['success']=True
     # data['history'] = history
-    data['all'] = ' '.join(map(str, all_exercise)) 
+    data['all'] = y = json.dumps(all_exercise)
     #data['new_exercises'] = new_exercises
     return HttpResponse(json.dumps(data), content_type='application/json')
