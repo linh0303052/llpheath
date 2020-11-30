@@ -13,6 +13,9 @@ class Exercise(models.Model):
     kind = models.CharField(max_length=1, choices=KIND_CHOICES, default='G')
     description = models.CharField(max_length=1024)
 
+    def toObject(self):
+        return {'title': self.title , 'kind': self.kind, 'description': self.description}
+
 
 class JoinExercise(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE)
