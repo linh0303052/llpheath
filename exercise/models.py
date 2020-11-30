@@ -12,9 +12,10 @@ class Exercise(models.Model):
     title = models.CharField(max_length=128)
     kind = models.CharField(max_length=1, choices=KIND_CHOICES, default='G')
     description = models.CharField(max_length=1024)
+    difficulty = models.IntegerField(default=3)
 
     def toObject(self):
-        return {'title': self.title , 'kind': self.get_kind_display(), 'description': self.description}
+        return {'title': self.title , 'kind': self.get_kind_display(), 'description': self.description, 'difficulty': self.difficulty}
 
 
 class JoinExercise(models.Model):
@@ -25,4 +26,4 @@ class JoinExercise(models.Model):
     last_join = models.DateField(auto_now=True)
     def toObject(self):
         return {'title': self.exercise.title , 'kind': self.exercise.get_kind_display(), 'description': self.exercise.description, 
-        'percentage': self.percentage}
+        'percentage': self.percentage, 'difficulty': self.exercise.difficulty}
