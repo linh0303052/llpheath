@@ -79,7 +79,7 @@ def auth(request):
 
 
 @csrf_exempt
-def forgot_password(request):
+def forgot_password(request, email):
     data = {'success': False}
     chars = 'abcdefghiklmnopqrstuvwxyz1234567890ABCDEFGHIKLMNOPQRSTUVWXYZ'
     password = ''
@@ -137,6 +137,9 @@ def getUser(request, username):
     data['D.O.B'] = user.dob.strftime('%Y-%m-%d')
     data['Height'] = user.height
     data['Weight'] = user.weight
-    data['Gender'] = user.gender
+    if user.gender:
+        data['Gender'] = 'Male'
+    else:
+        data['Gender'] = 'Female'
     data['success'] = True
     return HttpResponse(json.dumps(data), content_type='application/json')
