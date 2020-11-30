@@ -85,16 +85,15 @@ def forgot_password(request):
     password = ''
     for i in range(0, 8):
         password += random.choice(chars)
-    username = request.POST['username']
+    email = request.POST['email']
 
-    user = Account.objects.filter(username=username)
+    user = Account.objects.filter(email=email)
     if (len(user) == 0):
-        data['message'] = 'username does not exist'
+        data['message'] = 'email does not exist'
         return HttpResponse(json.dumps(data), content_type='application/json')
     
-    user = Account.objects.get(username=username)
+    user = Account.objects.get(email=email)
     last_name = user.last_name
-    email = user.email
     user.set_password(password)
     user.save()
     send_mail(
