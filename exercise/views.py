@@ -8,7 +8,8 @@ from django.http import HttpRequest, HttpResponse
 
 def get_exercise(request, username):
     history = JoinExercise.objects.filter(completed=False)
-    new_exercises = Exercise.objects.all()
+    history_id = [i.exercise.id for i in history]
+    new_exercises = Exercise.objects.raw('SELECT * FROM exercise_exercise e WHERE e.id NOT IN {}'.format(history_id))
 
     data={'success':False}
     data['success']=True
