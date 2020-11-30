@@ -129,7 +129,7 @@ def getUser(request, username):
     user = Account.objects.filter(username=username)
     if (len(user) == 0):
         data['message'] = 'This user does not exists.'
-            return HttpResponse(json.dumps(data), content_type='application/json')
+        return HttpResponse(json.dumps(data), content_type='application/json')
 
     user = Account.objects.get(username=username)
     data['First name'] = user.first_name
