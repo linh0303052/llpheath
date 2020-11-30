@@ -9,8 +9,8 @@ from django.http import HttpRequest, HttpResponse
 def get_exercise(request, username):
     history = JoinExercise.objects.filter(completed=False, user__username = username)
     # all_exercise = Exercise.objects.all()
-    exer_history = [i.exercise for i in history]
-    new_exercises = Exercise.objects.filter(self not in exer_history)
+    exer_history = [i.exercise.id for i in history]
+    new_exercises = Exercise.objects.filter(id not in exer_history)
     data={'success':False}
     data['success']=True
     data['history'] = [i.toObject() for i in history]
