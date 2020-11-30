@@ -9,13 +9,12 @@ from django.http import HttpRequest, HttpResponse
 def get_exercise(request, username):
     history = JoinExercise.objects.filter(completed=False)
     history_id = [i.exercise.id for i in history]
-    # new_exercises = Exercise.objects.exclude(id in history_id)
-
+    new_exercises = Exercise.objects.exclude(id__in=history_id)
 
     data={'success':False}
     data['success']=True
-    data['history'] = history_id#[i.toObject() for i in history]
-    # data['new_exercises'] = [i.toObject() for i in new_exercises]
+    data['history'] = [i.toObject() for i in history]
+    data['new_exercises'] = [i.toObject() for i in new_exercises]
     
     #data['all'] = [i.toObject() for i in all_exercise]
     #data['new_exercises'] = new_exercises
