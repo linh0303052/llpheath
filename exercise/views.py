@@ -11,6 +11,6 @@ def get_exercise(request, username):
     data={'success':False}
     data['success']=True
     # data['history'] = history
-    data['all'] = json.dumps(all_exercise)
+    data['all'] = all_exercise.__str__
     #data['new_exercises'] = new_exercises
     return HttpResponse(json.dumps(data), content_type='application/json')
