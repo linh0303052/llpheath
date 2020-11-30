@@ -15,7 +15,7 @@ class Exercise(models.Model):
     difficulty = models.IntegerField(default=3)
 
     def toObject(self):
-        return {'title': self.title , 'kind': self.get_kind_display(), 'description': self.description, 'difficulty': self.difficulty}
+        return {'title': self.title , 'kind': self.get_kind_display(), 'description': self.description, 'percentage': 0, 'difficulty': self.difficulty}
 
 
 class JoinExercise(models.Model):
