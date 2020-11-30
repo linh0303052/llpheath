@@ -12,7 +12,8 @@ def get_exercise(request, username):
     history_id = [i.exercise.id for i in history]
     new_exercises = Exercise.objects.all()
     for i in new_exercises:
-        new_exercises.remove(new_exercises[i]) if i.id in history_id
+        if i.id in history_id:
+            new_exercises.remove(new_exercises[i])
     data={'success':False}
     data['success']=True
     data['history'] = [i.toObject() for i in history]
