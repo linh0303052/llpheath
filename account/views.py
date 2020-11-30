@@ -79,7 +79,7 @@ def auth(request):
 
 
 @csrf_exempt
-def forgot_password(request, email):
+def forgot_password(request):
     data = {'success': False}
     chars = 'abcdefghiklmnopqrstuvwxyz1234567890ABCDEFGHIKLMNOPQRSTUVWXYZ'
     password = ''
