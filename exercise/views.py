@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Exercise, JoinExercise
 import json
+from django.core import serializers
 # Create your views here.
 
 def get_exercise(request, username):
@@ -10,6 +11,6 @@ def get_exercise(request, username):
     data={'success':False}
     data['success']=True
     # data['history'] = history
-    data['all'] = y = json.dumps(all_exercise)
+    data['all'] = json.dumps(all_exercise)
     #data['new_exercises'] = new_exercises
     return HttpResponse(json.dumps(data), content_type='application/json')
