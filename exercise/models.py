@@ -23,3 +23,6 @@ class JoinExercise(models.Model):
     percentage = models.FloatField(default=0)
     completed = models.BooleanField(default=False)
     last_join = models.DateField(auto_now=True)
+    def toObject(self):
+        return {'title': self.exercise.title , 'kind': self.exercise.get_kind_display(), 'description': self.exercise.description, 
+        'percentage': self.percentage}

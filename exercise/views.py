@@ -7,7 +7,7 @@ from django.http import HttpRequest, HttpResponse
 # Create your views here.
 
 def get_exercise(request, username):
-    history = Exercise.objects.filter(joinexercise__completed=False, joinexercise__user__username = username)
+    history = JoinExercise.objects.filter(completed=False, user__username = username)
     # all_exercise = Exercise.objects.all()
     # new_exercises = Exercise.objects.filter(self not in history)
     data={'success':False}
